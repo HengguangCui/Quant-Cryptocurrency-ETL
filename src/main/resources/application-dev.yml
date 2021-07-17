@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    username: root
+    password: 7935510
+    url: jdbc:postgresql://
+    driver-class-name: org.postgresql.Driver
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.example.BitCoinAnalyzer.entity
+
+#showSql
+logging:
+  level:
+    com.example.demo.mapper: debug
