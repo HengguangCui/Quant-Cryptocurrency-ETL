@@ -8,7 +8,7 @@ import org.springframework.http.HttpEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class imyCrawlerImpl implements ImyCrawler {
+public class myCrawlerImpl implements ImyCrawler {
 
     private List<BinanceHistoricalRates> getBinanceHistoricalRatesResponse(String url) {
         List<BinanceHistoricalRates> result = new ArrayList<>();
@@ -27,8 +27,8 @@ public class imyCrawlerImpl implements ImyCrawler {
                 }
                 BinanceHistoricalRates rate = new BinanceHistoricalRates();
                 rate.setOpenTime(itemSubArray.getLong(0));
-                rate.setopen(itemSubArray.getDouble(1));
-                rate.sethigh(itemSubArray.getDouble(2));
+                rate.setOpen(itemSubArray.getDouble(1));
+                rate.setHigh(itemSubArray.getDouble(2));
                 rate.setLow(itemSubArray.getDouble(3));
                 rate.setClose(itemSubArray.getDouble(4));
                 rate.setVolume(itemSubArray.getDouble(5));

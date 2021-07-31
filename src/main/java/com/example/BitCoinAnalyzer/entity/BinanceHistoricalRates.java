@@ -1,11 +1,10 @@
 package com.example.BitCoinAnalyzer.entity;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class BinanceHistoricalRates {
     private long openTime;
     private double open;
