@@ -1,6 +1,6 @@
 package com.example.BitCoinAnalyzer.util.impl;
 
-import com.example.BitCoinAnalyzer.entity.BinanceHistoricalRates;
+import com.example.BitCoinAnalyzer.entity.BinanceHistoricalRate;
 import com.example.BitCoinAnalyzer.util.IdataReader;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -9,7 +9,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,15 +20,15 @@ public class dataReaderImpl implements IdataReader {
      * @param filePath
      * @return res
      */
-    public List<BinanceHistoricalRates> readBinanceData(String filePath){
-        List<BinanceHistoricalRates> res = new ArrayList<>();
+    public List<BinanceHistoricalRate> readBinanceData(String filePath){
+        List<BinanceHistoricalRate> res = new ArrayList<>();
         try {
             InputStream inputData = new FileInputStream(new File(filePath));
             XSSFWorkbook xssfWorkbook = new XSSFWorkbook(inputData);
             XSSFSheet sheet = xssfWorkbook.getSheetAt(0);
             for(int i = 0; i <= sheet.getLastRowNum(); i++) {
                 XSSFRow curRow = sheet.getRow(i);
-                BinanceHistoricalRates record = new BinanceHistoricalRates();
+                BinanceHistoricalRate record = new BinanceHistoricalRate();
                 record.setOpenTime((long) curRow.getCell(0).getNumericCellValue());
                 record.setOpen(curRow.getCell(1).getNumericCellValue());
                 record.setHigh(curRow.getCell(2).getNumericCellValue());

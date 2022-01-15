@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-public class BinanceHistoricalRates {
+public class BinanceHistoricalRate {
     private long openTime;
     private double open;
     private double high;

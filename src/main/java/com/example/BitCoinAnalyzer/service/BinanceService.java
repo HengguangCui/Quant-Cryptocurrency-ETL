@@ -1,7 +1,7 @@
 package com.example.BitCoinAnalyzer.service;
 
 import com.example.BitCoinAnalyzer.dao.binancemapper.BinanceMapper;
-import com.example.BitCoinAnalyzer.entity.BinanceHistoricalRates;
+import com.example.BitCoinAnalyzer.entity.BinanceHistoricalRate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import static java.lang.String.format;
 
-@Service
+//@Service
 public class BinanceService {
     @Autowired
     BinanceMapper binanceMapper;
@@ -20,7 +20,7 @@ public class BinanceService {
      * @param closeTime
      * @return
      */
-    public ArrayList<BinanceHistoricalRates> select(long openTime, long closeTime) {
+    public ArrayList<BinanceHistoricalRate> select(long openTime, long closeTime) {
         if(openTime <= closeTime) {
             // TODO: time transfer
             // TODO: HOW TO FORMAT?

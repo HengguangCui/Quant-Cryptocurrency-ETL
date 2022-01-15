@@ -1,6 +1,6 @@
 package com.example.BitCoinAnalyzer.util.impl;
 
-import com.example.BitCoinAnalyzer.entity.BinanceHistoricalRates;
+import com.example.BitCoinAnalyzer.entity.BinanceHistoricalRate;
 import com.example.BitCoinAnalyzer.util.ImyCrawler;
 import org.json.JSONArray;
 import org.springframework.http.HttpEntity;
@@ -10,8 +10,8 @@ import java.util.List;
 
 public class myCrawlerImpl implements ImyCrawler {
 
-    private List<BinanceHistoricalRates> getBinanceHistoricalRatesResponse(String url) {
-        List<BinanceHistoricalRates> result = new ArrayList<>();
+    private List<BinanceHistoricalRate> getBinanceHistoricalRatesResponse(String url) {
+        List<BinanceHistoricalRate> result = new ArrayList<>();
 
         HttpEntity<String> jsonString = null;
         JSONArray itemSubArray=null;
@@ -25,7 +25,7 @@ public class myCrawlerImpl implements ImyCrawler {
                 if (itemSubArray.length() != 12) {
                     throw new Exception("retrived data has issue : " + itemSubArray);
                 }
-                BinanceHistoricalRates rate = new BinanceHistoricalRates();
+                BinanceHistoricalRate rate = new BinanceHistoricalRate();
                 rate.setOpenTime(itemSubArray.getLong(0));
                 rate.setOpen(itemSubArray.getDouble(1));
                 rate.setHigh(itemSubArray.getDouble(2));

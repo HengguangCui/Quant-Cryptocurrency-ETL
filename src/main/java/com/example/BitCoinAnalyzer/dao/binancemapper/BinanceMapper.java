@@ -1,9 +1,9 @@
 package com.example.BitCoinAnalyzer.dao.binancemapper;
 
-import com.example.BitCoinAnalyzer.entity.BinanceHistoricalRates;
+import com.example.BitCoinAnalyzer.entity.BinanceHistoricalRate;
 
 import java.util.ArrayList;
 
 public interface BinanceMapper {
-    ArrayList<BinanceHistoricalRates> select(long openTime, long closeTime);
+    ArrayList<BinanceHistoricalRate> select(long openTime, long closeTime);
 }

@@ -1,11 +1,13 @@
 package com.example.BitCoinAnalyzer.util.impl;
 
-import com.example.BitCoinAnalyzer.entity.BinanceHistoricalRates;
+import com.example.BitCoinAnalyzer.entity.BinanceHistoricalRate;
 import com.example.BitCoinAnalyzer.util.IdataStorage;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,13 +15,17 @@ import java.io.FileOutputStream;
 import java.util.List;
 
 @Slf4j
+@Component
 public class dataStorageImpl implements IdataStorage {
+    @Autowired
+    BinanceHistoricalRate rate;
     /**
      * save crawled data into local file for later use
      * @param binanceHistoricalRates
      */
     @Override
-    public void saveBinanceData(List<BinanceHistoricalRates> binanceHistoricalRates) {
+    public void saveBinanceData(List<BinanceHistoricalRate> binanceHistoricalRates) {
+
         try {
             File file = new File("filesystem/binanceRecord.xlsx");
             FileInputStream inputStream = new FileInputStream(file);
@@ -28,7 +34,7 @@ public class dataStorageImpl implements IdataStorage {
             // get last row num
             int lastRowNum = sheet.getLastRowNum();
             // write data after the last row
-            for(BinanceHistoricalRates bRates : binanceHistoricalRates) {
+            for(BinanceHistoricalRate bRates : binanceHistoricalRates) {
                 XSSFRow row = sheet.getRow(++lastRowNum);
                 row.getCell(0).setCellValue(bRates.getOpenTime());
                 row.getCell(1).setCellValue(bRates.getOpen());
@@ -49,4 +55,5 @@ public class dataStorageImpl implements IdataStorage {
             log.info("Catch exception when saving data into local files: " + e.toString());
         }
     }
+    public BinanceHistoricalRate getRate(){ return rate; }
 }
